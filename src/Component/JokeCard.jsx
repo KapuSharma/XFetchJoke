@@ -5,24 +5,24 @@ const JokeCard = () => {
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false);
 
-    const fetchJoke = async() => {
+    const fetchJoke = async () => {
         setLoading(true);
         setJoke(null);
         setError(null);
 
         try {
-            const response = await fetch("https://official-joke-api.appspot.com/random_joke");
+            const response = await fetch("https://official-joke-api.appspot.com/random_jok");
             const data = await response.json();
-        setJoke(data);
-        } 
+            setJoke(data);
+        }
         catch {
             setError("Could not fetch a joke. Try again.")
         }
-        finally{
+        finally {
             setLoading(false);
         }
     }
-    return(
+    return (
         <>
             <div className="container">
                 <h1>Random Joke</h1>
@@ -31,6 +31,9 @@ const JokeCard = () => {
                     {loading ? "Fetching..." : "Fetch joke"}
                 </button>
                 {error && <p style={{ color: "red" }}>{error}</p>}
+                {error && <p className="retry" onClick={fetchJoke}>
+                    Try again
+                </p>}
                 {
                     joke && (
                         <div>
