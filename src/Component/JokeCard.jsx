@@ -11,10 +11,7 @@ const JokeCard = () => {
         setError(null);
 
         try {
-            const response = await fetch("https://official-joke-api.appspot.com/random_joke");
-            if (!response.ok) {
-              throw new Error("API error");
-            }
+            const response = await fetch("https://official-joke-api.appspot.com/random_oke");
             const data = await response.json();
             setJoke(data);
         }
@@ -34,9 +31,12 @@ const JokeCard = () => {
                     {loading ? "Fetching..." : "Fetch joke"}
                 </button>
                 {error && <p style={{ color: "red" }}>{error}</p>}
-                {error && <p className="retry" onClick={fetchJoke}>
-                    Try again
-                </p>}
+{error && (
+  <button className="retry-btn" onClick={fetchJoke}>
+    Try again
+  </button>
+)}
+
                 {
                     joke && (
                         <div>

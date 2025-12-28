@@ -38,8 +38,16 @@ button:hover:not(:disabled) {
   background-color: #0b5ed7;
 }
 
-.retry {
+.retry-btn {
+  background: none;
+  border: none;
   color: #0d6efd;
-  cursor: pointer;
   text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.retry-btn:hover:not(:disabled){
+  background : none;
 }
