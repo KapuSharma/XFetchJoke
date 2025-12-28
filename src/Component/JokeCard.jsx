@@ -12,6 +12,9 @@ const JokeCard = () => {
 
         try {
             const response = await fetch("https://official-joke-api.appspot.com/random_joke");
+            if (!response.ok) {
+              throw new Error("API error");
+            }
             const data = await response.json();
             setJoke(data);
         }
