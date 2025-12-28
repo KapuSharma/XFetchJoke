@@ -3,7 +3,7 @@ import { useState } from "react";
 const JokeCard = () => {
     const [joke, setJoke] = useState();
     const [error, setError] = useState();
-    const [loading, setLoading]= useState();
+    const [loading, setLoading] = useState(false);
 
     const fetchJoke = async() => {
         setLoading(true);
@@ -16,7 +16,7 @@ const JokeCard = () => {
         setJoke(data);
         } 
         catch {
-            setError("Could not fetch a joke. Try Again.")
+            setError("Could not fetch a joke. Try again.")
         }
         finally{
             setLoading(false);
@@ -28,7 +28,7 @@ const JokeCard = () => {
                 <h1>Random Joke</h1>
                 <p>Click the button to fetch a fresh one.</p>
                 <button onClick={fetchJoke} disabled={loading}>
-                    {loading ? "Fetching..." : "Fetch Joke"}
+                    {loading ? "Fetching..." : "Fetch joke"}
                 </button>
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 {
@@ -43,7 +43,7 @@ const JokeCard = () => {
                         </div>
                     )
                 }
-                {!joke && <p>No joke yet.</p>}
+                {!joke && !loading && !error && <p>No joke yet.</p>}
             </div>
         </>
     )

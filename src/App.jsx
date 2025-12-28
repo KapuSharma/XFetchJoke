@@ -1,5 +1,4 @@
 
-import './App.css'
 import JokeCard from './Component/JokeCard'
 
 function App() {
